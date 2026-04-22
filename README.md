@@ -75,12 +75,13 @@ module "complete" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
+| <a name="requirement_alicloud"></a> [alicloud](#requirement\_alicloud) | >= 1.200.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_alicloud"></a> [alicloud](#provider\_alicloud) | n/a |
+| <a name="provider_alicloud"></a> [alicloud](#provider\_alicloud) | >= 1.200.0 |
 
 ## Modules
 
@@ -90,25 +91,25 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [alicloud_ga_accelerator.this](https://registry.terraform.io/providers/hashicorp/alicloud/latest/docs/resources/ga_accelerator) | resource |
-| [alicloud_ga_bandwidth_package.basic](https://registry.terraform.io/providers/hashicorp/alicloud/latest/docs/resources/ga_bandwidth_package) | resource |
-| [alicloud_ga_bandwidth_package.cross_domain](https://registry.terraform.io/providers/hashicorp/alicloud/latest/docs/resources/ga_bandwidth_package) | resource |
-| [alicloud_ga_bandwidth_package_attachment.basic](https://registry.terraform.io/providers/hashicorp/alicloud/latest/docs/resources/ga_bandwidth_package_attachment) | resource |
-| [alicloud_ga_bandwidth_package_attachment.cross_domain](https://registry.terraform.io/providers/hashicorp/alicloud/latest/docs/resources/ga_bandwidth_package_attachment) | resource |
-| [alicloud_ga_endpoint_group.this](https://registry.terraform.io/providers/hashicorp/alicloud/latest/docs/resources/ga_endpoint_group) | resource |
-| [alicloud_ga_ip_set.this](https://registry.terraform.io/providers/hashicorp/alicloud/latest/docs/resources/ga_ip_set) | resource |
-| [alicloud_ga_listener.tcp_80](https://registry.terraform.io/providers/hashicorp/alicloud/latest/docs/resources/ga_listener) | resource |
+| [alicloud_ga_accelerator.this](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/ga_accelerator) | resource |
+| [alicloud_ga_bandwidth_package.basic](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/ga_bandwidth_package) | resource |
+| [alicloud_ga_bandwidth_package.cross_domain](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/ga_bandwidth_package) | resource |
+| [alicloud_ga_bandwidth_package_attachment.basic](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/ga_bandwidth_package_attachment) | resource |
+| [alicloud_ga_bandwidth_package_attachment.cross_domain](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/ga_bandwidth_package_attachment) | resource |
+| [alicloud_ga_endpoint_group.this](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/ga_endpoint_group) | resource |
+| [alicloud_ga_ip_set.this](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/ga_ip_set) | resource |
+| [alicloud_ga_listener.tcp_80](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/ga_listener) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_bandwidth_package_basic"></a> [bandwidth\_package\_basic](#input\_bandwidth\_package\_basic) | Configuration object for the basic bandwidth package. | <pre>object({<br>    bandwidth      = optional(number, 20)<br>    bandwidth_type = optional(string, "Basic")<br>    duration       = optional(number, 1)<br>    auto_pay       = optional(bool, true)<br>  })</pre> | `{}` | no |
-| <a name="input_bandwidth_package_cross_domain"></a> [bandwidth\_package\_cross\_domain](#input\_bandwidth\_package\_cross\_domain) | Configuration object for the basic bandwidth package. | <pre>object({<br>    bandwidth = optional(number, 20)<br>    duration  = optional(number, 1)<br>    auto_pay  = optional(bool, true)<br>  })</pre> | `{}` | no |
+| <a name="input_bandwidth_package_basic"></a> [bandwidth\_package\_basic](#input\_bandwidth\_package\_basic) | Configuration object for the basic bandwidth package. | <pre>object({<br/>    bandwidth      = optional(number, 20)<br/>    bandwidth_type = optional(string, "Basic")<br/>    duration       = optional(number, 1)<br/>    auto_pay       = optional(bool, true)<br/>  })</pre> | `{}` | no |
+| <a name="input_bandwidth_package_cross_domain"></a> [bandwidth\_package\_cross\_domain](#input\_bandwidth\_package\_cross\_domain) | Configuration object for the basic bandwidth package. | <pre>object({<br/>    bandwidth = optional(number, 20)<br/>    duration  = optional(number, 1)<br/>    auto_pay  = optional(bool, true)<br/>  })</pre> | `{}` | no |
 | <a name="input_create_cross_domain_bandwidth_package"></a> [create\_cross\_domain\_bandwidth\_package](#input\_create\_cross\_domain\_bandwidth\_package) | whether to create a cross-domain bandwidth package. | `bool` | `false` | no |
-| <a name="input_ga_accelerator"></a> [ga\_accelerator](#input\_ga\_accelerator) | Configuration object for the GA accelerator. | <pre>object({<br>    accelerator_name       = optional(string, null)<br>    description            = optional(string, null)<br>    duration               = optional(number, 1)<br>    auto_use_coupon        = optional(bool, true)<br>    spec                   = optional(string, "3")<br>    pricing_cycle          = optional(string, "Month")<br>    renewal_status         = optional(string, "Normal")<br>    payment_type           = optional(string, null)<br>    bandwidth_billing_type = optional(string, null)<br>  })</pre> | `{}` | no |
-| <a name="input_ga_endpoint_group"></a> [ga\_endpoint\_group](#input\_ga\_endpoint\_group) | Configuration object for the GA endpoint group. | <pre>object({<br>    endpoint_group_region = string<br>    description           = optional(string, null)<br>    endpoint_group_type   = optional(string, "default")<br>    endpoint_configurations = list(object({<br>      endpoint = string<br>      type     = string<br>      weight   = number<br>    }))<br>  })</pre> | n/a | yes |
-| <a name="input_ga_ip_sets"></a> [ga\_ip\_sets](#input\_ga\_ip\_sets) | Map of GA IP sets configurations. The key is the region id. | <pre>map(object({<br>    bandwidth  = optional(number, 5)<br>    ip_version = optional(string, "IPV4")<br>  }))</pre> | `{}` | no |
+| <a name="input_ga_accelerator"></a> [ga\_accelerator](#input\_ga\_accelerator) | Configuration object for the GA accelerator. | <pre>object({<br/>    accelerator_name       = optional(string, null)<br/>    description            = optional(string, null)<br/>    duration               = optional(number, 1)<br/>    auto_use_coupon        = optional(bool, true)<br/>    spec                   = optional(string, "3")<br/>    pricing_cycle          = optional(string, "Month")<br/>    renewal_status         = optional(string, "Normal")<br/>    payment_type           = optional(string, null)<br/>    bandwidth_billing_type = optional(string, null)<br/>  })</pre> | `{}` | no |
+| <a name="input_ga_endpoint_group"></a> [ga\_endpoint\_group](#input\_ga\_endpoint\_group) | Configuration object for the GA endpoint group. | <pre>object({<br/>    endpoint_group_region = string<br/>    description           = optional(string, null)<br/>    endpoint_group_type   = optional(string, "default")<br/>    endpoint_configurations = list(object({<br/>      endpoint = string<br/>      type     = string<br/>      weight   = number<br/>    }))<br/>  })</pre> | n/a | yes |
+| <a name="input_ga_ip_sets"></a> [ga\_ip\_sets](#input\_ga\_ip\_sets) | Map of GA IP sets configurations. The key is the region id. | <pre>map(object({<br/>    bandwidth  = optional(number, 5)<br/>    ip_version = optional(string, "IPV4")<br/>  }))</pre> | `{}` | no |
 
 ## Outputs
 
